@@ -1,0 +1,48 @@
+\chapter{Introduction} % Contextualização e problema
+% UAvs and their applications
+% Control algorithms and PID (context, history and limitations)
+% Problem (How to achieve great satisfaction level of reliability in PID model applied to fixed-wing UAVs)
+
+\section{Motivation}
+\label{sec:motivation}
+
+Nowadays, the presence of automatic and autonomous systems in our daily lives are increasing exponentially. The presence of self-adapt models in many missions with high environmental changing rate is crucial for the task success helping humans to make decisions or increase situation awareness. These solutions are recognizable in modern aviation primarily in military branch. As integration between humans and machines becomes vital in many areas, the fragility of human life is highlighted as a limitation to mission achievement.
+
+Let us get the actual reality of fighter jets, these machines are designed to perform high G's maneuvers and defying gravity being capable of reach an average maximum of 12 Gs in material stress without permanent damage (here i need to put some reference about), but the flight systems are limited to a maximum of 9 Gs because that value is the upper-bound for a well trained pilot sustain for a few seconds. \cite{WHINNERY2013}
+
+The fragility essence of life does not just limit the machines potential in combat but also in transportation like the additional weight because of the life support systems necessary to maintain humans for long periods, like oxygen generation, seat belts, instrumentation, etc.
+
+Considering these restrictions, the deployment of drones and Unmanned Aerial Vehicles (UAVs) became crucial, initially in military and over the recent decades they are being used in precision agriculture, surveillance and search and rescue without risking human lives and great cost-benefit in all areas. Drones and UAVs are capable of do the dull, dirty, dangerous and covert jobs equally or greater than humans with smaller size and without psychological effects depending only on technology improvement. \cite{AUSTINUAS2010}
+ 
+ The deployment of automatic aerial vehicles in tasks of any nature faces the initial challenge of how to make a system capable of achieving straight leveled flight even with environmental degradation caused by crosswinds, turbulence, rain or thunderstorms. With the advance of mechanical automation, control models and miniaturization of electronic components, the assembly of systems with a high level of reliability in their behavior are possible and capable of transporting humans.
+
+ Today, those systems have become more complex and difficult for a single person to conceptualize from scratch. Algorithms that control an Airbus A320 or Boeing 737 are gigantic and meticulous with high complex mathematics, physics and control models with many layers of redundancy to ensure stable, secure and pleasant flight for passengers and flight crew. Control systems that use algorithms like Linear Quadratic Regulator, adaptive PID and others require refined calculations and high precision models to ensure their reliability which means a lot of effort studying and tuning the system, but this is impractical for low critical missions or leisure purposes.
+
+ The predecessor of those complex and modern control methods is the Proportional Integral Derivative model with your beginning around 1922 with Nicholas Minorsky for ship steering initially, but in the 1960s became the standard in analog autopilots for flying vehicles. The main concept of PID model concerns around three core variables, proportional, integral and derivative ones, where each of these is a constant. The PID was not overtaken by more recent control algorithms like the LQR, simply because of its simplicity and easier implementation over the modern ones.
+
+This research addresses the challenge of creating a reliable autonomous navigation system for a fixed-wing UAV, specifically focusing on waypoint-based missions. Such missions, for example, transporting a medical payload from point A to be delivered via parachute at point B, or conducting systematic aerial photography for cartographic or surveillance purposes—demand a high degree of navigational precision and flight stability. While commercial off-the-shelf (COTS) flight controllers that perform these functions are readily available, they often function as "black boxes," offering limited customizability and little insight into their internal control logic.  
+The core problem this work seeks to solve is: How can a PID-based control system be implemented from first principles on a custom-designed flight control unit to achieve a high level of reliability for waypoint-based navigation using the Global Navigation Satellite System (GNSS)?
+The justification for this project lies in its educational and practical value. By designing the hardware and developing the software from the ground up, a deep and transparent understanding of the entire autonomous flight system is achieved. This approach provides the flexibility to tailor the system to unique airframes or mission requirements, a feat often difficult or impossible with proprietary COTS systems.
+
+\section{Objectives}
+\subsection{General Objectives}
+
+The main goal of this work is to develop a complete navigation system for a self-made aircraft, featuring a custom PID flight controller, telemetry, and data logging — in order to evaluate whether it can achieve a high level of reliability when following predefined GNSS-based flight plans.
+
+\subsection{Specific Objectives}
+
+\begin{itemize}
+    \item \textbf{Design and fabricate the hardware and airframe:} Develop the electronic architecture and printed circuit boards using CAD tools, while simultaneously designing and manufacturing the custom airframe through 3D printing. The resulting prototype will serve as the physical platform for testing the navigation and control system.
+    
+    \item \textbf{Implement manual radio control:} Perform initial flights using a traditional radio control interface to understand the aerodynamic behavior, stability, and response of the aircraft. This stage provides essential reference data for controller tuning.
+    
+    \item \textbf{Develop and tune a PID-based attitude control model:} Implement and adjust a custom PID controller to maintain stable pitch, roll, and yaw dynamics. During this stage, the control algorithm will operate under pilot supervision to ensure smooth transition toward autonomous flight.
+    
+    \item \textbf{Integrate GNSS-based waypoint navigation:} Extend the system capabilities by enabling autonomous navigation through predefined flight plans. The aircraft must be able to read, store, and execute waypoint sequences with controlled accuracy and position tolerance.
+    
+    \item \textbf{Implement telemetry and ground control interface:} Develop a ground station capable of bidirectional communication for sending commands, updating flight plans, monitoring telemetry, and triggering safety procedures such as “return to base.” 
+    
+    \item \textbf{Conduct autonomous flight testing and evaluation:} Execute a full mission flight from point A to point B under real environmental conditions. The objective is to assess system autonomy, control stability, and reliability by completing a surveillance task such as capturing images from a designated target location.
+\end{itemize}
+
+%\chapter{Motivation}    % Justificativa

@@ -1,0 +1,21 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[Austin 2010]{AUSTINUAS2010}
+\abntrefinfo{Austin}{AUSTIN}{2010}
+{AUSTIN, R. \emph{Unmanned Aircraft Systems: UAVs Design, Development and
+  Deployment}. Chichester, West Sussex, UK: {John Wiley \& Sons}, 2010.
+  E-book.}
+
+\bibitem[Whinnery e Forster 2013]{WHINNERY2013}
+\abntrefinfo{Whinnery e Forster}{WHINNERY; FORSTER}{2013}
+{WHINNERY, T.; FORSTER, E.~M. The +gz-induced loss of consciousness curve.
+\emph{Extreme Physiology \& Medicine}, BioMed Central, v.~2, n.~1, p.~19, jun.
+  2013.
+Dispon{\'\i}vel em: \url{https://doi.org/10.1186/2046-7648-2-19}.}
+
+\end{thebibliography}

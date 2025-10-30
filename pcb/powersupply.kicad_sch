@@ -2937,6 +2937,26 @@
 		)
 		(uuid c7582587-8b3e-4a11-b277-847dde0baf2c)
 	)
+	(text "Based on typical application in datasheet"
+		(exclude_from_sim no)
+		(at 114.3 131.064 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "109fafa4-fd30-4563-8ba0-420f53823396")
+	)
+	(text "I2C Address: 0x40"
+		(exclude_from_sim no)
+		(at 229.108 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3a4bb926-d10b-4954-9f31-3908d41f97cd")
+	)
 	(text "Raw Input"
 		(exclude_from_sim no)
 		(at 119.634 57.404 0)
@@ -2970,6 +2990,16 @@
 			)
 		)
 		(uuid "93c075d1-f468-475f-ac15-132f12b62bec")
+	)
+	(text "Fixed Version"
+		(exclude_from_sim no)
+		(at 88.646 184.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "99ecae80-5643-4e8e-b207-4d0db0ff0a84")
 	)
 	(text "Power Supply System"
 		(exclude_from_sim no)
@@ -3007,6 +3037,16 @@
 			)
 		)
 		(uuid "c70c5a2b-2be0-42e3-934a-6ad8e56c7b22")
+	)
+	(text "Vout = 0.8 * (1 + R6/R7)"
+		(exclude_from_sim no)
+		(at 214.884 131.064 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eb8ba309-4d60-4131-a6c1-213cc8676af0")
 	)
 	(junction
 		(at 248.92 100.33)
@@ -7523,7 +7563,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "560"
+		(property "Value" "240"
 			(at 138.43 180.3399 0)
 			(effects
 				(font
@@ -7900,10 +7940,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "c41e4319-49ee-4e74-a5da-062c77079950")
+			(uuid "c41e4319-49ee-4e74-a5da-062c77079951")
 		)
 		(pin "1"
-			(uuid "08997f67-ec33-4ab3-b374-88278e1c8bdc")
+			(uuid "08997f67-ec33-4ab3-b374-88278e1c8bdd")
 		)
 		(instances
 			(project ""
@@ -8716,10 +8756,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "487b7004-d5bf-4798-8484-e0513dcf8b2e")
+			(uuid "487b7004-d5bf-4798-8484-e0513dcf8b2f")
 		)
 		(pin "1"
-			(uuid "e2f3e6fc-6d5a-4a80-8294-6e011fba18a6")
+			(uuid "e2f3e6fc-6d5a-4a80-8294-6e011fba18a7")
 		)
 		(instances
 			(project ""
