@@ -1,0 +1,113 @@
+\chapter{Metodology}
+
+The project development was divided into three unique areas:
+
+\section{Engineering}
+
+This section refers to all steps related to assembling, crafting and constructing the test platform for electronics and controlling areas. The final result is the single-engine, high-wing, fixed-gear, electric fixed-wing aircraft.
+
+\begin{enumerate}
+    \item \textbf{Structural Design:} Development of the airframe geometry, wings, and fuselage dimensions using CAD tools. This step ensures aerodynamic efficiency, mechanical integrity, and sufficient space for electronics integration. \\
+    \textit{Expected result:} A digital 3D model validated through basic aerodynamic simulations.
+    
+    \item \textbf{3D Printing and Material Processing:} Fabrication of the aircraft’s structural components using 3D printing technology with suitable polymers such as PLA or PETG. This method allows for rapid prototyping, precise geometry replication, and easy design iteration while maintaining low production costs. \\
+    \textit{Expected result:} High-accuracy printed airframe components ready for assembly and mechanical fitting.
+
+    \item \textbf{Assembly and Integration:} Installation of propulsion, battery, and structural components, integrating the electronics housing and control surfaces. This step verifies fit, alignment, and accessibility for maintenance. \\
+    \textit{Expected result:} A fully assembled aircraft prepared for system testing and calibration.
+
+    \item \textbf{Ground Testing:} Execution of static and taxi tests to evaluate motor performance, mechanical alignment, and balance. This reduces risks before flight operations. \\
+    \textit{Expected result:} Verified mechanical functionality and readiness for electronic integration and flight testing.
+\end{enumerate}
+
+\section{Electronics}
+
+The platform for applying control algorithms to airplane flight surfaces is the self-made printed circuit board capable of high-speed processing and real-time scheduling with embedded sensors and modular capabilities.
+
+\begin{enumerate}
+    \item \textbf{PCB Design and Fabrication:} Design of a custom printed circuit board integrating two microcontrollers — one dedicated to flight control and sensor data processing, and another handling communication, telemetry, and auxiliary functions. This distributed architecture enhances system reliability, parallel task execution, and modular software development. \\
+    \textit{Expected result:} A functional dual-microcontroller PCB providing robust computation and communication capabilities for flight control.
+
+    \item \textbf{Sensor Integration:} Incorporation of IMUs, GPS, airspeed, and barometric sensors to provide precise data for state estimation. Proper calibration and filtering are critical for reliable control performance. \\
+    \textit{Expected result:} Synchronized and calibrated sensor data streams available for real-time processing.
+
+    \item \textbf{Communication System Setup:} Implementation of telemetry and radio control links for remote data acquisition and flight management. This ensures real-time monitoring and operator control. \\
+    \textit{Expected result:} Reliable bidirectional communication between the aircraft and ground station.
+
+    \item \textbf{Power and Safety Validation:} Verification of power distribution, current limits, and protection mechanisms (fuses, voltage regulators). This step ensures safe operation and prevents component damage. \\
+    \textit{Expected result:} A stable power system supporting all onboard electronics under flight conditions.
+\end{enumerate}
+
+\section{Controlling}
+
+The airplane navigation logic like sensors readings, filtering, data-flow and control model is available in the FCU firmware to manage state estimation and surfaces output to maintain stable flight.
+
+\begin{enumerate}
+    \item \textbf{Firmware Development:} Implementation of embedded software for sensor acquisition, control loop execution, and actuator commands. This is the core of the autonomous flight control system. \\
+    \textit{Expected result:} Operational firmware running on the PCB, capable of stabilizing the aircraft in flight.
+
+    \item \textbf{State Estimation and Filtering:} Application of sensor fusion algorithms (e.g., complementary or Kalman filters) to obtain accurate attitude and position estimates. Reliable state estimation is essential for robust control. \\
+    \textit{Expected result:} Accurate and stable estimation of the aircraft’s orientation and velocity in real time.
+
+    \item \textbf{Control Algorithm Implementation:} Development and tuning of PID or model-based control laws for pitch, roll, yaw, and altitude control. This ensures smooth and responsive flight performance. \\
+    \textit{Expected result:} Stable flight dynamics with minimal oscillations and precise trajectory following.
+
+    \item \textbf{Flight Testing and Validation:} Execution of controlled flight tests to validate firmware performance and tuning. Data from onboard logs are analyzed to refine models and control gains. \\
+    \textit{Expected result:} Verified flight stability and reliable autonomous or assisted control performance.
+\end{enumerate}
+
+\section{Chronogram}
+
+\begin{table}[ht]
+    \begin{center}
+    
+    \begin{ganttchart}[
+    x unit = 0.44cm,
+    y unit title=0.5cm,
+    y unit chart=0.5cm,
+    vgrid,hgrid, 
+    title label anchor/.style={below=-1.6ex},
+    title left shift=.05,
+    title right shift=-.05,
+    title height=1,
+    progress label text={},
+    bar height=0.7,
+    group right shift=0,
+    group top shift=.6,
+    group height=.3,bar/.append style={fill=bargreen},
+    bar incomplete/.append style={fill=barred},
+    group incomplete/.append style={draw=black,fill=none}]{1}{32}
+    %labels
+    \gantttitle{2024}{8} \gantttitle{2025}{24}\\
+    \gantttitle{Nov}{4} 
+    \gantttitle{Dez}{4} 
+    \gantttitle{Jan}{4} 
+    \gantttitle{Fev}{4} 
+    \gantttitle{Mar}{4} 
+    \gantttitle{Abr}{4}
+    \gantttitle{Mai}{4}
+    \gantttitle{Jun}{4} \\
+    %tasks
+    \ganttbar[progress=62]{Etapa 1}{1}{8} \\
+    \ganttbar[progress=0]{Etapa 2}{7}{10} \\ %// mais pra lá a partir daqui 
+    \ganttbar[progress=0]{Etapa 3}{10}{15} \\
+    \ganttbar[progress=0]{Etapa 4}{13}{19} \\
+    \ganttbar[progress=0]{Etapa 5}{18}{25} \\ %//maior
+    \ganttbar[progress=0]{Etapa 6}{23}{30} \\ %//maior
+    \ganttbar[progress=0]{Etapa 7}{26}{32} \\ 
+    \ganttbar[progress=0]{Etapa 8}{23}{32} 
+    %relations  
+    %\ganttlink{elem0}{elem1} 
+    %\ganttlink{elem0}{elem3} 
+    %\ganttlink{elem1}{elem2} 
+    %\ganttlink{elem3}{elem4} 
+    %\ganttlink{elem1}{elem5} 
+    %\ganttlink{elem3}{elem5} 
+    %\ganttlink{elem2}{elem6} 
+    %\ganttlink{elem3}{elem6} 
+    \end{ganttchart}
+    \end{center}
+    
+    \caption{Cronograma}
+\label{tab:cronograma2}
+\end{table}
