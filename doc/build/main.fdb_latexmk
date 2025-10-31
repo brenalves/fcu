@@ -1,18 +1,19 @@
 # Fdb version 4
-["bibtex build/main"] 1761840015.55001 "build/main.aux" "build/main.bbl" "build/main" 1761840016.94527 0
+["bibtex build/main"] 1761926855.96784 "build/main.aux" "build/main.bbl" "build/main" 1761926857.41599 0
   "./bibliography.bib" 1761691979.53802 6213 9dcd119d0d710d0663b7f489c96f9f47 ""
   "/usr/share/texlive/texmf-dist/bibtex/bib/abntex2/abntex2-options.bib" 1357081713 5396 4eb260dac60f150ae608d45252853090 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/abntex2/abntex2-alf.bst" 1543183680 60064 0819ac8568f9a482510a46e3a8a6f605 ""
-  "build/chapters/chapter_1.aux" 1761840016.50855 2057 9983f2ef37b478f514ad877e8f06d99d "pdflatex"
-  "build/chapters/chapter_2.aux" 1761840016.51655 1934 9dde438050941542eb3a03efda7e44d2 "pdflatex"
-  "build/chapters/chapter_3.aux" 1761840016.64256 2139 d8eed0ef4727888285e9666aaa98f799 "pdflatex"
-  "build/main.aux" 1761840016.65556 1887 8df40804eeb25631a2e74fe7f9eee34a "pdflatex"
+  "build/chapters/chapter_1.aux" 1761926856.96569 2057 9983f2ef37b478f514ad877e8f06d99d "pdflatex"
+  "build/chapters/chapter_2.aux" 1761926856.97862 2082 01c7dd2139dd6591d9cc25565d72d486 "pdflatex"
+  "build/chapters/chapter_3.aux" 1761926857.10469 2139 d2d9e8d7ee9505ef32362973cb5d529c "pdflatex"
+  "build/main.aux" 1761926857.11769 1887 e5f2bea8afb7771a307ddceddd1c3550 "pdflatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["pdflatex"] 1761840015.62486 "main.tex" "build/main.pdf" "main" 1761840016.94545 0
+["pdflatex"] 1761926856.04843 "/home/breno/dev/fcu/doc/main.tex" "build/main.pdf" "main" 1761926857.41616 0
   "/etc/texmf/web2c/texmf.cnf" 1761358046.15914 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/breno/dev/fcu/doc/main.tex" 1761691979.5407 9993 eb53d364d9ccd33eaab90b0261e31212 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8r.tfm" 1136768653 4484 b828043cbd581d289d955903c1339981 ""
@@ -244,16 +245,17 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1761358058.18906 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1761358078 8214985 d04f0cb2c93efd3a91852e6027407ef2 ""
   "UFFStex.cls" 1761691979.54321 61623 8b30a87eed92554aa231850afa69bc6d ""
-  "build/chapters/chapter_1.aux" 1761840016.50855 2057 9983f2ef37b478f514ad877e8f06d99d "pdflatex"
-  "build/chapters/chapter_2.aux" 1761840016.51655 1934 9dde438050941542eb3a03efda7e44d2 "pdflatex"
-  "build/chapters/chapter_3.aux" 1761840016.64256 2139 d8eed0ef4727888285e9666aaa98f799 "pdflatex"
-  "build/main.aux" 1761840016.65556 1887 8df40804eeb25631a2e74fe7f9eee34a "pdflatex"
-  "build/main.bbl" 1761840015.61951 793 ba14e9d4e32d8add8554c48c1239fe0b "bibtex build/main"
-  "build/main.out" 1761840016.67224 876 a872c4e2aad2a0bcdd1dbbc5d8e198ab "pdflatex"
-  "build/main.toc" 1761840016.6726 2320 60c1886cab4e7155666c082d7b88490f "pdflatex"
+  "build/chapters/chapter_1.aux" 1761926856.96569 2057 9983f2ef37b478f514ad877e8f06d99d "pdflatex"
+  "build/chapters/chapter_2.aux" 1761926856.97862 2082 01c7dd2139dd6591d9cc25565d72d486 "pdflatex"
+  "build/chapters/chapter_3.aux" 1761926857.10469 2139 d2d9e8d7ee9505ef32362973cb5d529c "pdflatex"
+  "build/main.aux" 1761926857.11769 1887 e5f2bea8afb7771a307ddceddd1c3550 "pdflatex"
+  "build/main.bbl" 1761926856.04365 787 68622cfba9d6e2f73c6665362987b7cd "bibtex build/main"
+  "build/main.out" 1761926857.13457 815 24abcbd07b56c0917edfde1fda4435c9 "pdflatex"
+  "build/main.toc" 1761926857.13494 2178 7b4c845dea131843ba85326a97960ce6 "pdflatex"
   "chapters/chapter_1.tex" 1761691979.52674 7436 c21ca6a6600f2d562e858d442031f513 ""
-  "chapters/chapter_2.tex" 1761839847.74061 2952 b63d5bca75e8d1d9a0259c65486d9d6f ""
+  "chapters/chapter_2.tex" 1761926854.44158 3239 fa72f67fb5a4773f90f5e24edf456f42 ""
   "chapters/chapter_3.tex" 1761691979.52709 6826 d99dbfc1b8112ebb7c734b53fc29b54b ""
+  "figures/forces.jpg" 1761926052.55794 46928 df652eb4a4e0ef7548f558f78c5411fd ""
   "main.tex" 1761691979.5407 9993 eb53d364d9ccd33eaab90b0261e31212 ""
   (generated)
   "build/chapters/chapter_1.aux"

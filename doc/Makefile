@@ -1,8 +1,13 @@
 OUTDIR = build
 MAIN = main
+CLS = UFFStex.cls
 
 all:
 	mkdir -p $(OUTDIR)
-	mkdir -p $(OUTDIR)/chapters
-	latexmk -pdf -output-directory=$(OUTDIR) $(MAIN).tex
-	mv $(OUTDIR)/$(MAIN).pdf $(MAIN).pdf
+	cp -r chapters $(OUTDIR)/chapters
+	cp -r figures $(OUTDIR)/figures
+	cp $(MAIN).tex $(OUTDIR)/$(MAIN).tex
+	cp $(CLS) $(OUTDIR)/$(CLS)
+	cp bibliography.bib $(OUTDIR)/bibliography.bib
+	cd $(OUTDIR) && latexmk -pdf $(MAIN).tex
+	mv $(MAIN).pdf ../$(MAIN).pdf

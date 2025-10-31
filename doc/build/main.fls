@@ -3,7 +3,7 @@ INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
+INPUT /home/breno/dev/fcu/doc/main.tex
 OUTPUT build/main.log
 INPUT ./UFFStex.cls
 INPUT UFFStex.cls
@@ -455,6 +455,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/helvetic/phvro7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvro8r.tfm
+INPUT ./figures/forces.jpg
+INPUT ./figures/forces.jpg
+INPUT ./figures/forces.jpg
+INPUT ./figures/forces.jpg
+INPUT ./figures/forces.jpg
 INPUT ./chapters/chapter_3.tex
 INPUT ./chapters/chapter_3.tex
 OUTPUT build/chapters/chapter_3.aux

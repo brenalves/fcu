@@ -7,16 +7,16 @@
 \contentsline {subsection}{\numberline {1.2.1}\MakeTextUppercase []{General Objectives}}{8}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}\MakeTextUppercase []{Specific Objectives}}{8}{subsection.1.2.2}%
 \contentsline {chapter}{\numberline {2}\MakeTextUppercase []{Theoretical Framework}}{10}{chapter.2}%
-\contentsline {section}{\numberline {2.1}\MakeTextUppercase []{Forces in Flight}}{10}{section.2.1}%
-\contentsline {section}{\numberline {2.2}\MakeTextUppercase []{Flight Dynamics and Control}}{12}{section.2.2}%
-\contentsline {section}{\numberline {2.3}\MakeTextUppercase []{Related Papers}}{12}{section.2.3}%
+\contentsline {section}{\numberline {2.1}\MakeTextUppercase []{Fundaments and core concepts}}{10}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}\MakeTextUppercase []{Fixed-Wing Aircraft Control}}{10}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}\MakeTextUppercase []{Aircraft Axes and Surfaces}}{12}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}\MakeTextUppercase []{Related Papers}}{12}{section.2.2}%
 \contentsline {chapter}{\numberline {3}\MakeTextUppercase []{Metodology}}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}\MakeTextUppercase []{Engineering}}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}\MakeTextUppercase []{Electronics}}{14}{section.3.2}%
 \contentsline {section}{\numberline {3.3}\MakeTextUppercase []{Controlling}}{14}{section.3.3}%
 \contentsline {section}{\numberline {3.4}\MakeTextUppercase []{Chronogram}}{15}{section.3.4}%
-\contentsline {chapter}{\numberline {\hbox {}}\uppercase {References}}{16}{chapter*.2}%
-\contentsline {chapter}{\numberline {}\uppercase {Appendix}\nobreakspace A\nobreakspace --\nobreakspace \normalfont Meu primeiro apêndice}{17}{appendix.A}%
-\contentsline {chapter}{\numberline {}\uppercase {Appendix}\nobreakspace B\nobreakspace --\nobreakspace \normalfont My second appendix}{18}{appendix.B}%
-\contentsline {chapter}{\numberline {}\uppercase {Attachment}\nobreakspace A\nobreakspace --\nobreakspace \normalfont Meu primeiro anexo}{19}{appendix.A}%
-\contentsline {chapter}{\numberline {}\uppercase {Attachment}\nobreakspace B\nobreakspace --\nobreakspace \normalfont My second attachment}{20}{appendix.B}%
+\contentsline {chapter}{\numberline {}\uppercase {Appendix}\nobreakspace A\nobreakspace --\nobreakspace \normalfont Meu primeiro apêndice}{16}{appendix.A}%
+\contentsline {chapter}{\numberline {}\uppercase {Appendix}\nobreakspace B\nobreakspace --\nobreakspace \normalfont My second appendix}{17}{appendix.B}%
+\contentsline {chapter}{\numberline {}\uppercase {Attachment}\nobreakspace A\nobreakspace --\nobreakspace \normalfont Meu primeiro anexo}{18}{appendix.A}%
+\contentsline {chapter}{\numberline {}\uppercase {Attachment}\nobreakspace B\nobreakspace --\nobreakspace \normalfont My second attachment}{19}{appendix.B}%
