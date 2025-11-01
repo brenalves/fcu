@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 A level-1 auxiliary file: chapters/chapter_1.aux
@@ -25,44 +25,44 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://www.abntex.net.br/                               |
 +---------------------------------------------------------+
-You've used 3 entries,
+You've used 4 entries,
             6714 wiz_defined-function locations,
-            1218 strings with 9741 characters,
-and the built_in function-call counts, 3069 in all, are:
-= -- 416
-> -- 48
-< -- 43
-+ -- 103
-- -- 15
-* -- 176
-:= -- 449
-add.period$ -- 8
-call.type$ -- 3
-change.case$ -- 21
-chr.to.int$ -- 6
-cite$ -- 2
-duplicate$ -- 203
-empty$ -- 151
-format.name$ -- 70
-if$ -- 664
+            1226 strings with 9868 characters,
+and the built_in function-call counts, 3898 in all, are:
+= -- 483
+> -- 81
+< -- 44
++ -- 115
+- -- 25
+* -- 234
+:= -- 556
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 32
+chr.to.int$ -- 10
+cite$ -- 3
+duplicate$ -- 247
+empty$ -- 215
+format.name$ -- 117
+if$ -- 865
 int.to.chr$ -- 0
 int.to.str$ -- 0
-missing$ -- 48
-newline$ -- 18
-num.names$ -- 10
-pop$ -- 75
+missing$ -- 69
+newline$ -- 22
+num.names$ -- 15
+pop$ -- 105
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 14
 quote$ -- 0
-skip$ -- 270
+skip$ -- 312
 stack$ -- 1
-substring$ -- 119
-swap$ -- 78
+substring$ -- 137
+swap$ -- 97
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 15
+while$ -- 21
 width$ -- 0
-write$ -- 42
+write$ -- 57
