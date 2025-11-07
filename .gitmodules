@@ -1,0 +1,3 @@
+[submodule "src/simulation/jsbsim"]
+	path = src/simulation/jsbsim
+	url = https://github.com/JSBSim-Team/jsbsim
