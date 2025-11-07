@@ -5,8 +5,8 @@ project(Simulation)
 add_subdirectory(jsbsim)
 
 add_library(simulation STATIC
-    jsbsiminterface.h     
-    jsbsiminterface.cpp
+    JSBSimInterface.h     
+    JSBSimInterface.cpp
 )
 
 target_include_directories(simulation PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/jsbsim/src)
