@@ -1,24 +1,14 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.10)
 
-project(gravitumsimulation)
-
-set(CMAKE_CXX_STANDARD 20)
+project(Simulation)
 
 add_subdirectory(jsbsim)
 
-add_library(gravitumsimulation STATIC
-    JSBSimInterface.cpp
-    JSBSimInterface.h
+add_library(simulation STATIC
+    jsbsiminterface.h     
+    jsbsiminterface.cpp
 )
 
-target_include_directories(gravitumsimulation PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/jsbsim/src
-)
+target_include_directories(simulation PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/jsbsim/src)
 
-target_link_directories(gravitumsimulation PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/jsbsim/src
-)
-
-target_link_libraries(gravitumsimulation PUBLIC
-    jsbsim
-)
+target_link_libraries(simulation PUBLIC libJSBSim)
