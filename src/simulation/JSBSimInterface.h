@@ -6,7 +6,7 @@
 #include <FGFDMExec.h>
 #include <initialization/FGInitialCondition.h>
 
-struct FlightData
+struct InitialConditions
 {
     double latitude;
     double longitude;
@@ -23,14 +23,15 @@ public:
     JSBSimInterface(const char* aircraftPath, const char* enginePath, const char* systemPath, double updateFrequencyHz);
     ~JSBSimInterface();
 
-    void initializeSimulation(const char* aircraft, FlightData initialConditions);
+    void initializeSimulation(const char* aircraft, InitialConditions initialConditions);
     void stepSimulation();
+
+    inline double getValue(const char* name) { _fdm.GetPropertyValue(name); }
+    inline void setValue(const char* name, double value) { _fdm.SetPropertyValue(name, value); }
     
-    inline FlightData& getInitialConditions() { return _initialConditions; }
-    inline FlightData& getCurrentFlightData() { return _currentFlightData; }
+    inline InitialConditions& getInitialConditions() { return _initialConditions; }
 
 private:
     JSBSim::FGFDMExec _fdm;
-    FlightData _initialConditions;
-    FlightData _currentFlightData;
+    InitialConditions _initialConditions;
 };

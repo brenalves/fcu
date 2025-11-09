@@ -16,7 +16,7 @@ JSBSimInterface::~JSBSimInterface()
     std::cout << "JSBSimInterface destroyed." << std::endl;
 }
 
-void JSBSimInterface::initializeSimulation(const char* aircraft, FlightData initialConditions)
+void JSBSimInterface::initializeSimulation(const char* aircraft, InitialConditions initialConditions)
 {
     _initialConditions = initialConditions;
 
@@ -56,12 +56,4 @@ void JSBSimInterface::initializeSimulation(const char* aircraft, FlightData init
 void JSBSimInterface::stepSimulation()
 {
     _fdm.Run();
-
-    _currentFlightData.latitude = _fdm.GetPropertyValue("position/lat-geod-deg");
-    _currentFlightData.longitude = _fdm.GetPropertyValue("position/long-gc-deg");
-    _currentFlightData.altitude = _fdm.GetPropertyValue("position/h-sl-ft");
-    _currentFlightData.roll = _fdm.GetPropertyValue("attitude/phi-deg");
-    _currentFlightData.pitch = _fdm.GetPropertyValue("attitude/theta-deg");
-    _currentFlightData.heading = _fdm.GetPropertyValue("attitude/psi-deg");
-    _currentFlightData.airspeed = _fdm.GetPropertyValue("velocities/vtrue-kts");
 }
