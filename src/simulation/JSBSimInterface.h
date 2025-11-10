@@ -26,8 +26,8 @@ public:
     void initializeSimulation(const char* aircraft, InitialConditions initialConditions);
     void stepSimulation();
 
-    inline double getValue(const char* name) { _fdm.GetPropertyValue(name); }
-    inline void setValue(const char* name, double value) { _fdm.SetPropertyValue(name, value); }
+    inline double getValue(const char* name) { return _fdm.GetPropertyValue(std::string(name)); }
+    inline void setValue(const char* name, double value) { _fdm.SetPropertyValue(std::string(name), value); }
     
     inline InitialConditions& getInitialConditions() { return _initialConditions; }
 

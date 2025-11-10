@@ -42,5 +42,7 @@ axs[2][1].set_ylabel('Longitude (deg)')
 axs[2][1].grid(True)
 axs[2][1].legend()
 
+axs[3][0].plot(df['Time'], df[''])
+
 plt.tight_layout()
 plt.show()

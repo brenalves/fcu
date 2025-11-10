@@ -31,13 +31,13 @@ int main()
 
     JSBSimInterface jsbsimInterface("simulation/aircraft", "simulation/engine", "simulation/systems", UPDATE_FREQUENCY_HZ);
     InitialConditions initConds;
-    initConds.latitude = 37.6188056;   // Example: San Francisco Intl Airport
+    initConds.latitude = 37.6188056; // Example: San Francisco Intl Airport
     initConds.longitude = -122.3754167;
-    initConds.altitude = 3000.0;         // Feet
+    initConds.altitude = 3000.0; // Feet
     initConds.roll = 0.0;
     initConds.pitch = 0.0;
-    initConds.heading = 90.0;           // East
-    initConds.airspeed = 150.0;         // Knots
+    initConds.heading = 90.0;   // East
+    initConds.airspeed = 100.0; // Knots
     jsbsimInterface.initializeSimulation("c172p", initConds);
 
     std::ofstream logFile("jsbsim_flight_log.csv");
@@ -49,11 +49,16 @@ int main()
     fc.aileron = jsbsimInterface.getValue("fcs/aileron-cmd-norm");
     fc.elevator = jsbsimInterface.getValue("fcs/elevator-cmd-norm");
     fc.rudder = jsbsimInterface.getValue("fcs/rudder-cmd-norm");
-    fc.throttle = jsbsimInterface.getValue("fcs/throttle-cmd-norm");
+    fc.throttle = 1.0; // Full throttle
 
     double simulationTime = 0.0;
-    while(simulationTime < SIMULATION_MAX_TIME_SEC)
+    while (simulationTime < SIMULATION_MAX_TIME_SEC)
     {
+        jsbsimInterface.setValue("fcs/aileron-cmd-norm", fc.aileron);
+        jsbsimInterface.setValue("fcs/elevator-cmd-norm", fc.elevator);
+        jsbsimInterface.setValue("fcs/rudder-cmd-norm", fc.rudder);
+        jsbsimInterface.setValue("fcs/throttle-cmd-norm", fc.throttle);
+
         jsbsimInterface.stepSimulation();
 
         fd.roll = jsbsimInterface.getValue("attitude/phi-deg");
@@ -63,19 +68,28 @@ int main()
         fd.latitude = jsbsimInterface.getValue("position/lat-geod-deg");
         fd.longitude = jsbsimInterface.getValue("position/long-gc-deg");
         fd.airspeed = jsbsimInterface.getValue("velocities/vtrue-kts");
+        fc.aileron = jsbsimInterface.getValue("fcs/aileron-cmd-norm");
+        fc.elevator = jsbsimInterface.getValue("fcs/elevator-cmd-norm");
+        fc.rudder = jsbsimInterface.getValue("fcs/rudder-cmd-norm");
+        fc.throttle = jsbsimInterface.getValue("fcs/throttle-cmd-norm");
+
+        std::cout << "Time: " << simulationTime << " sec | "
+                  << "Lat: " << fd.latitude << " deg, Lon: " << fd.longitude << " deg, Alt: " << fd.altitude << " ft | "
+                  << "Roll: " << fd.roll << " deg, Pitch: " << fd.pitch << " deg, Heading: " << fd.heading << " deg | "
+                  << "Airspeed: " << fd.airspeed << " kts" << std::endl;
 
         logFile << simulationTime << ","
-                 << fd.latitude << ","
-                 << fd.longitude << ","
-                 << fd.altitude << ","
-                 << fd.roll << ","
-                 << fd.pitch << ","
-                 << fd.heading << ","
-                 << fd.airspeed << ","
-                 << fc.aileron << ","
-                 << fc.elevator << ","
-                 << fc.rudder << ","
-                 << fc.throttle << std::endl;
+                << fd.latitude << ","
+                << fd.longitude << ","
+                << fd.altitude << ","
+                << fd.roll << ","
+                << fd.pitch << ","
+                << fd.heading << ","
+                << fd.airspeed << ","
+                << fc.aileron << ","
+                << fc.elevator << ","
+                << fc.rudder << ","
+                << fc.throttle << std::endl;
 
         simulationTime += 1.0 / UPDATE_FREQUENCY_HZ;
         std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(1000.0 / UPDATE_FREQUENCY_HZ)));
