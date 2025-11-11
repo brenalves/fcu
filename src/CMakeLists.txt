@@ -1,26 +1,25 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
-project(FCU)
+add_subdirectory(jsbsim)
 
-add_subdirectory(simulation)
+project(fcu)
 
-add_executable(fcu
-    main.cpp
-)
+add_executable(fcu main.cpp pid.h pid.cpp)
 
-target_include_directories(fcu PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/simulation)
-
-target_link_libraries(fcu PUBLIC simulation)
+target_include_directories(fcu PRIVATE jsbsim/src)
+target_link_libraries(fcu PRIVATE libJSBSim)
 
 add_custom_command(
     TARGET fcu POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/simulation/jsbsim/aircraft
-        $<TARGET_FILE_DIR:fcu>/simulation/aircraft
+        ${CMAKE_SOURCE_DIR}/jsbsim/aircraft
+        $<TARGET_FILE_DIR:fcu>/aircraft
+
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/simulation/jsbsim/engine
-        $<TARGET_FILE_DIR:fcu>/simulation/engine
+        ${CMAKE_SOURCE_DIR}/jsbsim/engine
+        $<TARGET_FILE_DIR:fcu>/engine
+
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/simulation/jsbsim/systems
-        $<TARGET_FILE_DIR:fcu>/simulation/systems
+        ${CMAKE_SOURCE_DIR}/jsbsim/systems
+        $<TARGET_FILE_DIR:fcu>/systems
 )

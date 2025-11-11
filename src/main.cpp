@@ -1,103 +1,132 @@
+#include <FGFDMExec.h>
+#include <initialization/FGInitialCondition.h>
+#include <input_output/net_fdm.hxx>
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include "JSBSimInterface.h"
+#include <fstream>
 
-#define UPDATE_FREQUENCY_HZ 50
-#define SIMULATION_MAX_TIME_SEC 30
+#include "pid.h"
+
+#define SIMULATION_DURATION 20     // seconds
+#define SIMULATION_FREQUENCY 120.0 // Hz
 
 struct FlightData
 {
-    double roll;
-    double pitch;
-    double heading;
-    double airspeed;
     double latitude;
     double longitude;
     double altitude;
+    double trueAirspeed;
+    double pitch;
+    double roll;
+    double yaw;
+    double verticalSpeed;
 };
 
-struct FlightControls
-{
-    double aileron;
-    double elevator;
-    double rudder;
-    double throttle;
-};
+JSBSim::FGFDMExec fdm;
+FlightData flightData;
 
 int main()
 {
-    std::cout << "Starting FCU application..." << std::endl;
+    // Set up paths
+    fdm.SetAircraftPath(SGPath("aircraft"));
+    fdm.SetEnginePath(SGPath("engine"));
+    fdm.SetSystemsPath(SGPath("systems"));
 
-    JSBSimInterface jsbsimInterface("simulation/aircraft", "simulation/engine", "simulation/systems", UPDATE_FREQUENCY_HZ);
-    InitialConditions initConds;
-    initConds.latitude = 37.6188056; // Example: San Francisco Intl Airport
-    initConds.longitude = -122.3754167;
-    initConds.altitude = 3000.0; // Feet
-    initConds.roll = 0.0;
-    initConds.pitch = 0.0;
-    initConds.heading = 90.0;   // East
-    initConds.airspeed = 100.0; // Knots
-    jsbsimInterface.initializeSimulation("c172p", initConds);
-
-    std::ofstream logFile("jsbsim_flight_log.csv");
-    logFile << "Time,Latitude,Longitude,Altitude,Roll,Pitch,Heading,Airspeed,Aileron,Elevator,Rudder,Throttle" << std::endl;
-
-    FlightData fd;
-    FlightControls fc;
-
-    fc.aileron = jsbsimInterface.getValue("fcs/aileron-cmd-norm");
-    fc.elevator = jsbsimInterface.getValue("fcs/elevator-cmd-norm");
-    fc.rudder = jsbsimInterface.getValue("fcs/rudder-cmd-norm");
-    fc.throttle = 1.0; // Full throttle
-
-    double simulationTime = 0.0;
-    while (simulationTime < SIMULATION_MAX_TIME_SEC)
+    // Load model
+    if (!fdm.LoadModel("c172x"))
     {
-        jsbsimInterface.setValue("fcs/aileron-cmd-norm", fc.aileron);
-        jsbsimInterface.setValue("fcs/elevator-cmd-norm", fc.elevator);
-        jsbsimInterface.setValue("fcs/rudder-cmd-norm", fc.rudder);
-        jsbsimInterface.setValue("fcs/throttle-cmd-norm", fc.throttle);
-
-        jsbsimInterface.stepSimulation();
-
-        fd.roll = jsbsimInterface.getValue("attitude/phi-deg");
-        fd.pitch = jsbsimInterface.getValue("attitude/theta-deg");
-        fd.heading = jsbsimInterface.getValue("attitude/psi-deg");
-        fd.altitude = jsbsimInterface.getValue("position/h-sl-ft");
-        fd.latitude = jsbsimInterface.getValue("position/lat-geod-deg");
-        fd.longitude = jsbsimInterface.getValue("position/long-gc-deg");
-        fd.airspeed = jsbsimInterface.getValue("velocities/vtrue-kts");
-        fc.aileron = jsbsimInterface.getValue("fcs/aileron-cmd-norm");
-        fc.elevator = jsbsimInterface.getValue("fcs/elevator-cmd-norm");
-        fc.rudder = jsbsimInterface.getValue("fcs/rudder-cmd-norm");
-        fc.throttle = jsbsimInterface.getValue("fcs/throttle-cmd-norm");
-
-        std::cout << "Time: " << simulationTime << " sec | "
-                  << "Lat: " << fd.latitude << " deg, Lon: " << fd.longitude << " deg, Alt: " << fd.altitude << " ft | "
-                  << "Roll: " << fd.roll << " deg, Pitch: " << fd.pitch << " deg, Heading: " << fd.heading << " deg | "
-                  << "Airspeed: " << fd.airspeed << " kts" << std::endl;
-
-        logFile << simulationTime << ","
-                << fd.latitude << ","
-                << fd.longitude << ","
-                << fd.altitude << ","
-                << fd.roll << ","
-                << fd.pitch << ","
-                << fd.heading << ","
-                << fd.airspeed << ","
-                << fc.aileron << ","
-                << fc.elevator << ","
-                << fc.rudder << ","
-                << fc.throttle << std::endl;
-
-        simulationTime += 1.0 / UPDATE_FREQUENCY_HZ;
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(1000.0 / UPDATE_FREQUENCY_HZ)));
+        std::cerr << "Failed to load aircraft." << std::endl;
+        return -1;
     }
 
-    logFile.close();
+    double dt = 1.0 / SIMULATION_FREQUENCY;
+    fdm.Setdt(dt);
 
-    std::cout << "Simulation finished." << std::endl;
+    // Set initial conditions
+    fdm.SetPropertyValue("ic/lat-geod-deg", 37.6188056); // San Francisco Intl Airport
+    fdm.SetPropertyValue("ic/long-gc-deg", -122.3754167);
+    fdm.SetPropertyValue("ic/h-sl-ft", 5000); // 5000 feet
+    fdm.SetPropertyValue("ic/vt-kts", 120);   // 120 knots
+    fdm.SetPropertyValue("ic/phi-deg", 0);
+    fdm.SetPropertyValue("ic/theta-deg", 0);
+    fdm.SetPropertyValue("ic/psi-deg", 90);  // East
+    fdm.SetPropertyValue("ic/roc-fpm", 0); // Level flight
+
+    if (!fdm.RunIC())
+    {
+        std::cerr << "Failed to run initial conditions." << std::endl;
+        return -1;
+    }
+
+    // Turn engine #0 on
+    fdm.SetPropertyValue("propulsion/set-running", 0);
+
+    // Print property catalog
+    std::ofstream propertyCatalogFile("property_catalog.txt");
+
+    const auto &catalog = fdm.GetPropertyCatalog();
+    for (const auto &entry : catalog)
+    {
+        propertyCatalogFile << entry << std::endl;
+    }
+    propertyCatalogFile.close();
+
+    std::ofstream logFile("flight_log.csv");
+    logFile << "time,latitude,longitude,altitude,true_airspeed,vertical_speed,roll,pitch,heading,roll_target,pitch_target,aileron,elevator,throttle" << std::endl;
+
+    PID rollPID(0.2, 0.1, 0.0, -1.0, 1.0);
+    PID pitchPID(0.002, 0.05, 0.0, -1.0, 1.0);
+
+    // Main simulation loop
+    double simTime = 0.0;
+    while (simTime <= SIMULATION_DURATION)
+    {
+        fdm.Run();
+
+        flightData.latitude = fdm.GetPropertyValue("position/lat-geod-deg");
+        flightData.longitude = fdm.GetPropertyValue("position/long-gc-deg");
+        flightData.altitude = fdm.GetPropertyValue("position/h-sl-ft");
+        flightData.trueAirspeed = fdm.GetPropertyValue("velocities/vtrue-kts");
+        flightData.roll = fdm.GetPropertyValue("attitude/phi-deg");
+        flightData.pitch = fdm.GetPropertyValue("attitude/theta-deg");
+        flightData.yaw = fdm.GetPropertyValue("attitude/psi-deg");
+        flightData.verticalSpeed = fdm.GetPropertyValue("velocities/h-dot-fps");
+
+        double aileronCmd = rollPID.update(0.0, flightData.roll, dt);   // Target roll: 0 degrees
+        double elevatorCmd = -pitchPID.update(0.0, flightData.pitch, dt); // Target pitch: 0 degrees
+
+        fdm.SetPropertyValue("fcs/aileron-cmd-norm", aileronCmd);
+        fdm.SetPropertyValue("fcs/elevator-cmd-norm", elevatorCmd);
+        fdm.SetPropertyValue("fcs/throttle-cmd-norm", 1.0); // 70% throttle
+
+        logFile << simTime << ","
+                << flightData.latitude << ","
+                << flightData.longitude << ","
+                << flightData.altitude << ","
+                << flightData.trueAirspeed << ","
+                << flightData.verticalSpeed << ","
+                << flightData.roll << ","
+                << flightData.pitch << ","
+                << flightData.yaw << ","
+                << 0.0 << ","  // Target heading
+                << 0.0 << ","  // Target roll
+                << aileronCmd << ","
+                << elevatorCmd << ","
+                << 1.0
+                << std::endl;
+
+        std::cout << "Time: " << simTime
+                  << " Latitude: " << flightData.latitude
+                  << " Longitude: " << flightData.longitude
+                  << " Altitude: " << flightData.altitude
+                  << " TrueAirspeed: " << flightData.trueAirspeed
+                  << " VerticalSpeed: " << flightData.verticalSpeed
+                  << std::endl;
+
+        simTime = fdm.GetSimTime();
+        //std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(1000.0 / SIMULATION_FREQUENCY)));
+    }
 
     return 0;
 }
