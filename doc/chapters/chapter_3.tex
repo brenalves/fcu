@@ -49,11 +49,12 @@ The airplane navigation logic like sensors readings, filtering, data-flow and co
     \item \textbf{State Estimation and Filtering:} Application of sensor fusion algorithms (e.g., complementary or Kalman filters) to obtain accurate attitude and position estimates. Reliable state estimation is essential for robust control. \\
     \textit{Expected result:} Accurate and stable estimation of the aircraft’s orientation and velocity in real time.
 
-    \item \textbf{Control Algorithm Implementation:} Development and tuning of PID or model-based control laws for pitch, roll, yaw, and altitude control. This ensures smooth and responsive flight performance. \\
+    \item \textbf{Control Algorithm Implementation:} Development and tuning of PID or model-based control laws for pitch, roll, yaw, and altitude control. This ensures smooth and responsive flight performance. Tuning will be performed empirically, starting with the roll axis, by progressively increasing gains while monitoring for oscillation, first in simulation or a test bench, followed by real-world flight tests.
+    %\\
     \textit{Expected result:} Stable flight dynamics with minimal oscillations and precise trajectory following.
 
     \item \textbf{Flight Testing and Validation:} Execution of controlled flight tests to validate firmware performance and tuning. Data from onboard logs are analyzed to refine models and control gains. \\
-    \textit{Expected result:} Verified flight stability and reliable autonomous or assisted control performance.
+    \textit{Expected result:} Verified flight stability and reliable autonomous or assisted control performance. This will be validated by analyzing the flight logs to plot the GNSS-defined planned path against the actual flight path and calculating the cross-track error
 \end{enumerate}
 
 \section{Chronogram}
